@@ -47,8 +47,8 @@ jobs:
                       filtered.append({
                           'entity_id': entity.id,
                           'route_id': ie.route_id,
-                          'header_text': alert.header_text.translations[0].text,
-                          'description': alert.description_text.translations[0].text,
+                          'header_text': alert.header_text.translation[0].text,
+                          'description': alert.description_text.translation[0].text,
                           'start': getattr(alert.active_period[0], 'start', None),
                           'end':   getattr(alert.active_period[0], 'end',   None)
                       })
