@@ -1,0 +1,98 @@
+name: Monitor Calgary Transit Routes 201 & 202
+
+on:
+  schedule:
+    - cron: '0 15 * * 6'      # every Saturday at 15:00 UTC
+  workflow_dispatch: {}       # manual trigger
+
+jobs:
+  check-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install gtfs-realtime-bindings
+
+      - name: Fetch & filter GTFS-RT alerts
+        id: parse
+        run: |
+          python3 - << 'EOF'
+          import json
+          import urllib.request
+          from google.transit import gtfs_realtime_pb2
+
+          URL = 'https://data.calgary.ca/download/jhgn-ynqj/alerts.pb'
+          data = urllib.request.urlopen(URL).read()
+
+          feed = gtfs_realtime_pb2.FeedMessage()
+          feed.ParseFromString(data)
+
+          filtered = []
+          for entity in feed.entity:
+              if not entity.HasField('alert'):
+                  continue
+              alert = entity.alert
+              for ie in alert.informed_entity:
+                  if ie.route_id in ('201', '202'):
+                      filtered.append({
+                          'entity_id': entity.id,
+                          'route_id': ie.route_id,
+                          'header_text': alert.header_text.translations[0].text,
+                          'description': alert.description_text.translations[0].text,
+                          'start': getattr(alert.active_period[0], 'start', None),
+                          'end':   getattr(alert.active_period[0], 'end',   None)
+                      })
+                      break
+
+          with open('current_alerts.json', 'w') as f:
+              json.dump(sorted(filtered,
+                               key=lambda x: (x['route_id'], x['entity_id'])),
+                        f, indent=2)
+          EOF
+
+      - name: Compare with last snapshot
+        id: diff
+        run: |
+          git fetch origin main
+          if [[ -f last_alerts.json ]]; then
+            diff -q last_alerts.json current_alerts.json && changed=0 || changed=1
+          else
+            changed=1
+          fi
+          echo "changed=$changed" >> $GITHUB_OUTPUT
+
+      - name: Send email on changes
+        if: steps.diff.outputs.changed == '1'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: 'Calgary Alerts Changed (Routes 201 & 202)'
+          to: ${{ secrets.ALERT_EMAIL_TO }}
+          body: |
+            The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
+
+            ```json
+            $(cat current_alerts.json)
+            ```
+
+      - name: Persist new snapshot
+        if: steps.diff.outputs.changed == '1'
+        run: |
+          mv current_alerts.json last_alerts.json
+          git config user.name 'github-actions'
+          git config user.email 'actions@github.com'
+          git add last_alerts.json
+          git commit -m 'Update alerts snapshot for routes 201 & 202'
+          git push
