@@ -1,5 +1,8 @@
 name: Monitor Calgary Transit Routes 201 & 202
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '*/30 * * * *'      # for testing, every 30 minutes
