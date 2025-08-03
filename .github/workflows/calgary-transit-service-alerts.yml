@@ -77,9 +77,11 @@ jobs:
       - name: Read alerts JSON
         id: readjson
         run: |
-          echo "json_content<<EOF" >> $GITHUB_OUTPUT
-          cat current_alerts.json >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          {
+            echo 'json_content<<EOF'
+            cat current_alerts.json
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
       - name: Send email on changes
         if: steps.diff.outputs.changed == '1'
