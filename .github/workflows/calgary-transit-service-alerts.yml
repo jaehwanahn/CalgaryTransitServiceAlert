@@ -98,4 +98,4 @@ jobs:
           git config user.email 'actions@github.com'
           git add last_alerts.json
           git commit -m 'Update alerts snapshot for routes 201 & 202'
-          git push
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }} HEAD:main
