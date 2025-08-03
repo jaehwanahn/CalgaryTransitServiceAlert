@@ -2,7 +2,8 @@ name: Monitor Calgary Transit Routes 201 & 202
 
 on:
   schedule:
-    - cron: '0 15 * * 6'      # every Saturday at 15:00 UTC
+    - cron: '*/30 * * * *'      # for testing, every 30 minutes
+    # - cron: '0 15 * * 6'      # every Saturday at 15:00 UTC
   workflow_dispatch: {}       # manual trigger
 
 jobs:
