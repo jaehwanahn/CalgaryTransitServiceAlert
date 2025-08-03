@@ -75,10 +75,12 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
-          server_port: 587
+          server_port: 465
+          secure: true
+          from: GitHub Action
           username: ${{ secrets.SMTP_USER }}
           password: ${{ secrets.SMTP_PASS }}
-          subject: 'Calgary Alerts Changed (Routes 201 & 202)'
+          subject: Calgary Alerts Changed (Routes 201 & 202)
           to: ${{ secrets.ALERT_EMAIL_TO }}
           body: |
             The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
