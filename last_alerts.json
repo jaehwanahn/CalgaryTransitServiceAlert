@@ -1,10 +1,10 @@
 [
   {
-    "entity_id": "176042",
+    "entity_id": "176366",
     "route_id": "202",
     "header_text": "",
-    "description": "<p><strong>Aug 16-17: West LRT - 69 Street to Downtown West/Kerby closure</strong></p>\n<p>The Blue Line will be closed between Westbrook and Downtown West/Kerby stations starting Saturday, August 16 until the very early hours of Monday, August 18.</p>\n<p>Trains coming from the east/downtown will terminate at Downtown West/Kerby Station, and trains from the west will terminate at Westbrook. For travel between Downtown West/Kerby and Westbrook Station, we\u00bfll have shuttle buses replacing train service.</p>\n<p>For more information please visit calgarytransit.com/ctrain-service</p>",
-    "start": 1754996400,
-    "end": 1755507600
+    "description": "<p><strong>Aug 23-25: Marlborough to Franklin closure</strong></p>\n<p>The Blue Line will be closed between Marlborough and Franklin stations starting Saturday, August 23 until the very early hours of Monday, August 25.</p>\n<p>Trains coming from the west and downtown will terminate at Franklin Station. And trains from the northeast will terminate at Marlborough. For travel between these two stations, we will have shuttle buses replacing train service, running every 5 minutes.\n</p>\n<p>For more information please visit calgarytransit.com/ctrain-service</p>",
+    "start": 1755601200,
+    "end": 1756114200
   }
 ]
