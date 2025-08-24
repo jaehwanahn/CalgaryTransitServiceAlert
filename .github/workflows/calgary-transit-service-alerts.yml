@@ -97,9 +97,9 @@ jobs:
         id: readhtml
         run: |
           {
-            echo "html_content<<EOF"
+            echo "html_content<<__END_OF_HTML__"
             cat current_alerts.html
-            echo "EOF"
+            echo "__END_OF_HTML__"
           } >> $GITHUB_OUTPUT
 
       - name: Send email on changes
