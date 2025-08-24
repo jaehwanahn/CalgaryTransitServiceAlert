@@ -57,10 +57,15 @@ jobs:
                       })
                       break
 
+          output = []
+          for item in filtered:
+              output.append({
+                  'route_id': item['route_id'],
+                  'description': item['description']
+              })
+
           with open('current_alerts.json', 'w') as f:
-              json.dump(sorted(filtered,
-                               key=lambda x: (x['route_id'], x['entity_id'])),
-                        f, indent=2)
+              json.dump(output, f, indent=2)
           EOF
 
       - name: Compare with last snapshot
@@ -91,12 +96,12 @@ jobs:
           password: ${{ secrets.SMTP_PASS }}
           subject: Calgary Alerts Changed (Routes 201 & 202)
           to: ${{ secrets.ALERT_EMAIL_TO }}
+          content_type: text/html
           body: |
-            The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
-
-            ```json
+            <h3>The CalgaryTransit Service Alerts for routes <b>201</b> and <b>202</b> have changed. Current alerts:</h3>
+            <pre>
             ${{ steps.readjson.outputs.json_content }}
-            ```
+            </pre>
 
       - name: Persist new snapshot
         if: steps.diff.outputs.changed == '1'
