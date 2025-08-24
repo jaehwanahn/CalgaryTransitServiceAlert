@@ -66,6 +66,15 @@ jobs:
 
           with open('current_alerts.json', 'w') as f:
               json.dump(output, f, indent=2)
+
+          # Build HTML output
+          output_html = "<ul>"
+          for item in filtered:
+              output_html += f"<li><b>Route {item['route_id']}:</b> {item['description']}</li>"
+          output_html += "</ul>"
+
+          with open('current_alerts.html', 'w') as f:
+              f.write(output_html)
           EOF
 
       - name: Compare with last snapshot
@@ -84,6 +93,13 @@ jobs:
         run: |
           printf "json_content<<EOF\n%s\nEOF\n" "$(cat current_alerts.json)" >> $GITHUB_OUTPUT
 
+      - name: Read alerts HTML
+        id: readhtml
+        run: |
+          echo "html_content<<EOF" >> $GITHUB_OUTPUT
+          cat current_alerts.html >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Send email on changes
         if: steps.diff.outputs.changed == '1'
         uses: dawidd6/action-send-mail@v3
@@ -98,10 +114,8 @@ jobs:
           to: ${{ secrets.ALERT_EMAIL_TO }}
           content_type: text/html
           body: |
-            <h3>The CalgaryTransit Service Alerts for routes <b>201</b> and <b>202</b> have changed. Current alerts:</h3>
-            <pre>
-            ${{ steps.readjson.outputs.json_content }}
-            </pre>
+            The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
+            ${{ steps.readhtml.outputs.html_content }}
 
       - name: Persist new snapshot
         if: steps.diff.outputs.changed == '1'
@@ -112,4 +126,3 @@ jobs:
           git add last_alerts.json
           git commit -m 'Update alerts snapshot for routes 201 & 202'
           git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }} HEAD:main
-

@@ -37,6 +37,18 @@ for item in filtered:
 with open('current_alerts.json', 'w') as f:
     json.dump(output, f, indent=2)
 
+# Build HTML output
+output_html = "<ul>"
+for item in filtered:
+    output_html += f"<li><b>Route {item['route_id']}:</b> {item['description']}</li>"
+output_html += "</ul>"
+
+with open('current_alerts.html', 'w') as f:
+    f.write(output_html)
+
+print(output_html)
+
 # Print the JSON to the console for local debugging
-with open('current_alerts.json', 'r') as f:
-    print(f.read())
+#with open('current_alerts.json', 'r') as f:
+#    print(f.read())
+
