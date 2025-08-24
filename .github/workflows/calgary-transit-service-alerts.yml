@@ -67,14 +67,6 @@ jobs:
           with open('current_alerts.json', 'w') as f:
               json.dump(output, f, indent=2)
 
-          # Build HTML output
-          output_html = "<ul>"
-          for item in filtered:
-              output_html += f"<li><b>Route {item['route_id']}:</b> {item['description']}</li>"
-          output_html += "</ul>"
-
-          with open('current_alerts.html', 'w') as f:
-              f.write(output_html)
           EOF
 
       - name: Compare with last snapshot
@@ -93,15 +85,6 @@ jobs:
         run: |
           printf "json_content<<EOF\n%s\nEOF\n" "$(cat current_alerts.json)" >> $GITHUB_OUTPUT
 
-      - name: Read alerts HTML
-        id: readhtml
-        run: |
-          {
-            echo "html_content<<__END_OF_HTML__"
-            cat current_alerts.html
-            echo "__END_OF_HTML__"
-          } >> $GITHUB_OUTPUT
-
       - name: Send email on changes
         if: steps.diff.outputs.changed == '1'
         uses: dawidd6/action-send-mail@v3
@@ -117,7 +100,7 @@ jobs:
           content_type: text/html
           body: |
             The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
-            ${{ steps.readhtml.outputs.html_content }}
+            ${{ steps.readjson.outputs.json_content }}
 
       - name: Persist new snapshot
         if: steps.diff.outputs.changed == '1'
