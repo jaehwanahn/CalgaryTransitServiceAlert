@@ -96,9 +96,11 @@ jobs:
       - name: Read alerts HTML
         id: readhtml
         run: |
-          echo "html_content<<EOF" >> $GITHUB_OUTPUT
-          cat current_alerts.html >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          {
+            echo "html_content<<EOF"
+            cat current_alerts.html
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Send email on changes
         if: steps.diff.outputs.changed == '1'
