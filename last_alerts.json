@@ -1,14 +1,6 @@
 [
   {
     "route_id": "201",
-    "description": "<p><strong>Sept 20-21: Banff Trail to University (Single Tracking)</strong></p>\n<p>Banff Trail and University stations will NOT be fully closed, this is a partial closure.\n<p>The northbound track will be closed at Banff Trail and University stations for maintenance work starting Saturday, September 20 until the early hours of Monday, September 22.\n</p>\n<p>For more information please visit calgarytransit.com/ctrain-service</p>"
-  },
-  {
-    "route_id": "201",
-    "description": "<p><strong>Sept 20-21: Somerset-Bridlewood to Anderson closure</strong></p>\n<p>The Red Line will be closed between Somerset-Bridlewood and Anderson stations starting Saturday, September 20 until the early hours of Monday, September 22.</p>\n<p>Red Line trains coming from the north and downtown will terminate at Anderson Station. For travel between Somerset-Bridlewood and Anderson Stations, we'll have shuttle buses replacing train service.\n</p>\n<p>For more information please visit calgarytransit.com/ctrain-service</p>"
-  },
-  {
-    "route_id": "202",
-    "description": "<div data-effect=\"ACCESSIBILITY_ISSUE\"></div>The inbound elevator at Sunalta Station is temporarily out of service."
+    "description": "<div data-effect=\"ACCESSIBILITY_ISSUE\"></div><p>The elevators at Tuscany Station are closed for repairs until further notice.</p>\n<p>A shuttle bus is available between Tuscany and Crowfoot stations for customers needing elevator access.</p>"
   }
 ]
