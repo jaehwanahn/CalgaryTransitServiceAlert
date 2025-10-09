@@ -98,10 +98,11 @@ jobs:
           password: ${{ secrets.SMTP_PASS }}
           subject: Calgary Alerts Changed (Routes 201 & 202)
           to: ${{ secrets.ALERT_EMAIL_TO }}
-          content_type: text/html
-          body: |
-            The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
+          html_body: |
+            <h3>The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:</h3>
+            <pre>
             ${{ steps.readjson.outputs.json_content }}
+            </pre>
 
       - name: Send email if no changes
         if: steps.diff.outputs.changed != '1'
@@ -115,9 +116,8 @@ jobs:
           password: ${{ secrets.SMTP_PASS }}
           subject: No Change in Calgary Transit Alerts (Routes 201 & 202)
           to: ${{ secrets.ALERT_EMAIL_TO }}
-          content_type: text/html
-          body: |
-            There are no new changes in the CalgaryTransit Service Alerts for routes 201 and 202.
+          html_body: |
+            <p>There are no new changes in the CalgaryTransit Service Alerts for routes 201 and 202.</p>
 
       - name: Persist new snapshot
         if: steps.diff.outputs.changed == '1'
