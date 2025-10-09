@@ -102,6 +102,22 @@ jobs:
             The CalgaryTransit Service Alerts for routes 201 and 202 have changed. Current alerts:
             ${{ steps.readjson.outputs.json_content }}
 
+      - name: Send email if no changes
+        if: steps.diff.outputs.changed != '1'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          from: GitHub Action
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: No Change in Calgary Transit Alerts (Routes 201 & 202)
+          to: ${{ secrets.ALERT_EMAIL_TO }}
+          content_type: text/html
+          body: |
+            There are no new changes in the CalgaryTransit Service Alerts for routes 201 and 202.
+
       - name: Persist new snapshot
         if: steps.diff.outputs.changed == '1'
         run: |
