@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "route_id": "201",
+    "description": "<p><strong>October 25-26: Brentwood to Tuscany closure</strong></p>\n<p>The Red Line will be closed between Brentwood and Tuscany stations starting Saturday, October 25 until the very early hours of Monday, October 27.</p>\n<p>Red Line trains coming from the south and downtown will terminate at Brentwood Station. For travel between Tuscany and Brentwood Stations, we'll have shuttle buses replacing train service.</p>\n<p><strong>October 26: Lions Park (Single Tracking)</strong></p>\n<p>The Red Line will be single tracking between Lions Park Station and Banff Trail Station on Sunday, October 26. You will need to use the south platform at Lions Park Station on Sunday, October 26.\n<p>Full CTrain service will be back up and running again by start of service on Monday, October 27.</p>\n<p>Please visit calgarytransit.com/ctrain-service for more information.</p>"
+  },
+  {
+    "route_id": "202",
+    "description": "<p><strong>October 25-26: City Hall/Bow Valley College & Bridgeland/Memorial Stations (Single Tracking)</strong></p>\n<p>The Blue Line will be single tracking between Bridgeland/Memorial Station and City Hall/Bow Valley College Station starting Saturday, October 25 until end of service on Sunday, October 26. This is not a full closure.</p>\n<p>Keep an eye on the station digital displays and listen for station announcements to ensure you\u00bfre using the correct side when travelling on the Blue Line between these stations.</p>\n<p>Full CTrain service on the will be back up and running again by start of service Monday, October 27.</p>\n<p>Please visit calgarytransit.com/ctrain-service for more information.</p>"
+  },
+  {
+    "route_id": "202",
+    "description": "<div data-effect=\"ACCESSIBILITY_ISSUE\"></div>Please be aware that the elevator at Marlborough Station is temporarily out of service. We are working to get it fixed."
+  }
+]
