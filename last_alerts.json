@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "route_id": "201",
+    "description": "<p><b>Nov 22: Banff Trail to Sunnyside (Single Tracking)</b>\n\n<p>The northbound track will be closed at Lions Park, SAIT/AUArts/Jubilee, and Sunnyside stations for construction work from 5:00 a.m. to 7:00 p.m. on Saturday, November 22.\n\n<p>This means the trains will only be using one track at these stations for travel in both directions. Whether you\u00bfre heading northbound towards Tuscany, or southbound towards City Centre/Somerset-Bridlewood, you will need to catch the train via the southbound side of the platform (the one heading toward City Centre).\n\n<p>For more information please visit: calgarytransit.com/ctrain-service"
+  },
+  {
+    "route_id": "201",
+    "description": "<div data-effect=\"ACCESSIBILITY_ISSUE\"></div><p>The elevator to the station platform at Dalhousie Station will be closed for repair work from Monday, November 24 to the early hours of Saturday, November 29. During this time, Red Line Shuttle buses will be available to accommodate customers from Dalhousie to both Brentwood and Crowfoot Stations.</p>\n<p>For more information please visit: calgarytransit.com/elevators</p>"
+  }
+]
