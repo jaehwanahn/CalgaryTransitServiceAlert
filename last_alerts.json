@@ -1,6 +1,10 @@
 [
   {
     "route_id": "202",
-    "description": "<p><strong>Nov 29-30: Saddletowne to McKnight-Westwinds (Single Tracking)</strong></p>\n<p>These stations will NOT be fully closed, this is a partial closure.</p>\n<ul>\n<li>On Saturday, November 29, from 7:00 a.m. to 7:00 p.m., you will need to catch your train from the northeastbound side of the platform (toward Saddletowne) for travel in BOTH directions from the impacted stations.</li>\n<li>On Sunday, November 30, from 7:00 a.m. to 7:00 p.m., you will need to use the westbound side of the platform (towards 69 Street) for BOTH directions of travel from these stations.</li>\n</ul>\n<p>For more information please visit calgarytransit.com/ctrain-service</p>"
+    "description": "<p><strong>Dec 4-5, Dec 7: Downtown West/Kerby Station (Single Tracking)</strong></p>\n<p>This station will NOT be fully closed, this is a partial closure. There is emergency work scheduled on the westbound track near Downtown West/Kerby Station on Thursday, December 4 from 10 a.m. to 2 p.m. Work will continue on the westbound track from 10 a.m. until approximately 2 p.m. on Friday, December 5, and from 6:30 a.m. until end of service (or work is complete) on Sunday, December 7.</p>\n<p>For travel in either direction from Downtown West/Kerby Station during this time, you will need to catch the train from the eastbound platform (the one heading into City Centre).</p>\n<p>For more information, please visit calgarytransit.com/ctrain-service</p>"
+  },
+  {
+    "route_id": "202",
+    "description": "<div data-effect=\"ACCESSIBILITY_ISSUE\"></div><p><strong>Dec 3-6: Sunalta Station - Elevator Outage</strong></p>\n<p>The elevators to the station platforms at Sunalta Station will be closed for repair work staring on Wednesday, December 3 and are scheduled to reopen by start of service on Saturday, December 6.</p>\n<p>During this time, Blue Line Shuttle buses will be available to accommodate customers from Sunalta Station to Downtown West/Kerby Station.</p>\n<p>To learn more, please visit calgarytransit.com/elevators</p>"
   }
 ]
