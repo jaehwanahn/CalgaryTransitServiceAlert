@@ -4,11 +4,11 @@ permissions:
   contents: write
 
 on:
-  schedule:
+  #schedule:
     # - cron: '*/30 * * * *'      # for testing, every 30 minutes
-    - cron: '0 15 * * 5'      # every Friday at 15:00 UTC
-    - cron: '0 15 * * 6'      # every Saturday at 15:00 UTC
-  workflow_dispatch: {}       # manual trigger
+  #  - cron: '0 15 * * 5'      # every Friday at 15:00 UTC
+  #  - cron: '0 15 * * 6'      # every Saturday at 15:00 UTC
+  #workflow_dispatch: {}       # manual trigger
 
 jobs:
   check-alerts:
